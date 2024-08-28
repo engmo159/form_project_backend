@@ -6,8 +6,13 @@ import userRoute from './routes/userRoute'
 
 dotenv.config()
 const app = express()
-app.use(cors())
-
+app.use(
+  cors({
+    origin: 'http://localhost:5173', // Replace with your frontend URL
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  })
+)
 app.use(express.json())
 
 mongoose
