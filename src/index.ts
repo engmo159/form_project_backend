@@ -6,7 +6,13 @@ import userRoute from './routes/userRoute'
 
 dotenv.config()
 const app = express()
-app.use(cors({ allowedHeaders: 'Content-Type,Authorization' }))
+app.use(
+  cors({
+    origin: 'https://form-project-kappa-seven.vercel.app',
+    methods: 'GET,POST,PUT,DELETE',
+    allowedHeaders: 'Content-Type,Authorization',
+  })
+)
 
 app.use(express.json())
 
