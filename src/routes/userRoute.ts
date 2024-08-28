@@ -21,5 +21,11 @@ router.post('/login', validateJWT, async (req, res) => {
     res.status(500).send('something went wrong!')
   }
 })
-
+router.get('/', async (req, res) => {
+  try {
+    res.send('<h1>Welcome to the Homepage</h1>')
+  } catch (error) {
+    res.status(500).json({ message: 'Server error' })
+  }
+})
 export default router
