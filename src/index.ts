@@ -1,18 +1,18 @@
 import express from 'express'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
-import cors from 'cors'
+// import cors from 'cors'
 import userRoute from './routes/userRoute'
 
 dotenv.config()
 const app = express()
-app.use(
-  cors({
-    origin: 'https://form-project-kappa-seven.vercel.app',
-    methods: 'GET,POST,PUT,DELETE',
-    allowedHeaders: 'Content-Type,Authorization',
-  })
-)
+// app.use(
+//   cors({
+//     origin: 'https://form-project-kappa-seven.vercel.app',
+//     methods: 'GET,POST,PUT,DELETE',
+//     allowedHeaders: 'Content-Type,Authorization',
+//   })
+// )
 
 app.use(express.json())
 
