@@ -12,7 +12,7 @@ router.post('/register', async (req, res) => {
     res.status(500).send('something went wrong!')
   }
 })
-router.post('/login', validateJWT, async (req, res) => {
+router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body
     const { statusCode, data } = await login({ email, password })
