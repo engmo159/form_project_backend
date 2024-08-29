@@ -1,6 +1,7 @@
 import userModel from '../models/userModel'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
+import { Request, Response } from 'express'
 
 // register
 
@@ -43,4 +44,20 @@ export const login = async ({ email, password }: LoginParams) => {
 // jwt
 const generateJWT = (data: any) => {
   return jwt.sign(data, process.env.JWT_SECRET || '')
+}
+
+// find single user
+interface UserRequest extends Request {
+  user?: any
+}
+export const getUserInfo = async (req: UserRequest, res: Response) => {
+  try {
+    const user = await userModel.findById(req.user._id).select('-password')
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' })
+    }
+    res.json(user)
+  } catch (error) {
+    res.status(500).json({ message: 'Server error' })
+  }
 }

@@ -1,5 +1,5 @@
 import express from 'express'
-import { login, register } from '../services/userService'
+import { login, register, getUserInfo } from '../services/userService'
 import validateJWT from '../middlewares/validateJWT'
 
 const router = express.Router()
@@ -21,6 +21,8 @@ router.post('/login', async (req, res) => {
     res.status(500).send('something went wrong!')
   }
 })
+router.get('/me', validateJWT, getUserInfo)
+
 router.get('/', async (req, res) => {
   try {
     res.send('<h1>Welcome to the Homepage</h1>')
