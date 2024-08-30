@@ -29,6 +29,7 @@ const validateJWT = (req: ExtendRequest, res: Response, next: NextFunction) => {
     const userPayload = payload as {
       email: string
       name: string
+      role: string
     }
     // fetch user from database based on payload
     const user = await userModel.findOne({ email: userPayload.email })

@@ -17,9 +17,14 @@ export const register = async ({ name, email, password }: RegisterParams) => {
     return { data: 'User already exists!', statusCode: 400 }
   }
   const hashedPassword = await bcrypt.hash(password, 10)
-  const newUser = new userModel({ name, email, password: hashedPassword })
+  const newUser = new userModel({
+    name,
+    email,
+    password: hashedPassword,
+    role: 'user',
+  })
   await newUser.save()
-  return { data: generateJWT({ name, email }), statusCode: 200 }
+  return { data: generateJWT({ name, email, role: 'user' }), statusCode: 200 }
 }
 
 // login
@@ -35,7 +40,7 @@ export const login = async ({ email, password }: LoginParams) => {
   const passwordMatch = await bcrypt.compare(password, findUser.password)
   if (passwordMatch) {
     return {
-      data: generateJWT({ email, name: findUser.name }),
+      data: generateJWT({ email, name: findUser.name, role: findUser.role }),
       statusCode: 200,
     }
   }
