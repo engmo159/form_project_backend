@@ -16,7 +16,7 @@ router.get('/:id', async (req, res) => {
   const products = await getProductById(req, res)
   res.status(200).send(products)
 })
-router.put('/:id', async (req, res) => {
+router.put('/edit/:id', async (req, res) => {
   const products = await updateProduct(req, res)
   res.status(200).send(products)
 })
