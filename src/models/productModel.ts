@@ -46,24 +46,24 @@ export interface ProductDocument extends Document {
 }
 
 const DimensionsSchema: Schema = new Schema({
-  width: { type: Number, required: true },
-  height: { type: Number, required: true },
-  depth: { type: Number, required: true },
+  width: { type: Number },
+  height: { type: Number },
+  depth: { type: Number },
 })
 
 const ReviewSchema: Schema = new Schema({
-  rating: { type: Number, required: true },
-  comment: { type: String, required: true },
+  rating: { type: Number },
+  comment: { type: String },
   date: { type: Date, default: Date.now },
-  reviewerName: { type: String, required: true },
-  reviewerEmail: { type: String, required: true },
+  reviewerName: { type: String },
+  reviewerEmail: { type: String },
 })
 
 const MetaSchema: Schema = new Schema({
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
-  barcode: { type: String, required: true },
-  qrCode: { type: String, required: true },
+  barcode: { type: String },
+  qrCode: { type: String },
 })
 
 const ProductSchema: Schema = new Schema({
