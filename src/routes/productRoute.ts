@@ -24,7 +24,7 @@ router.delete('/:id', async (req, res) => {
   const products = await deleteProduct(req, res)
   res.status(200).send(products)
 })
-router.post('/', async (req, res) => {
+router.post('/add', async (req, res) => {
   const products = await createProduct(req, res)
   res.status(200).send(products)
 })
