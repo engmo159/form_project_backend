@@ -85,9 +85,9 @@ const ProductSchema: Schema = new Schema({
   reviews: [ReviewSchema],
   returnPolicy: { type: String },
   minimumOrderQuantity: { type: Number },
-  meta: { type: MetaSchema, required: true },
-  images: [{ type: String, required: true }],
-  thumbnail: { type: String, required: true },
+  meta: { type: MetaSchema },
+  images: [{ type: String }],
+  thumbnail: { type: String },
 })
 
 const productModel = mongoose.model<ProductDocument>('Product', ProductSchema)
