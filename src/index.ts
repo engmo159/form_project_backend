@@ -5,6 +5,7 @@ import cors from 'cors'
 import userRoute from './routes/userRoute'
 import productRoute from './routes/productRoute'
 import { seedInitialProducts } from './services/productService'
+import cartRoute from './routes/cartRoute'
 
 dotenv.config()
 const app = express()
@@ -20,6 +21,7 @@ seedInitialProducts()
 
 app.use('/user', userRoute)
 app.use('/product', productRoute)
+app.use('/cart', cartRoute)
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
