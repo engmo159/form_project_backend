@@ -9,23 +9,43 @@ import {
 const router = express.Router()
 
 router.get('/', async (req, res) => {
-  const products = await getAllProducts(req, res)
-  res.status(200).send(products)
+  try {
+    const products = await getAllProducts(req, res)
+    res.status(200).send(products)
+  } catch (err) {
+    res.status(500).send('something went wrong!')
+  }
 })
 router.get('/:id', async (req, res) => {
-  const products = await getProductById(req, res)
-  res.status(200).send(products)
+  try {
+    const products = await getProductById(req, res)
+    res.status(200).send(products)
+  } catch (err) {
+    res.status(500).send('something went wrong!')
+  }
 })
 router.put('/edit/:id', async (req, res) => {
-  const products = await updateProduct(req, res)
-  res.status(200).send(products)
+  try {
+    const products = await updateProduct(req, res)
+    res.status(200).send(products)
+  } catch (err) {
+    res.status(500).send('something went wrong!')
+  }
 })
 router.delete('/:id', async (req, res) => {
-  const products = await deleteProduct(req, res)
-  res.status(200).send(products)
+  try {
+    const products = await deleteProduct(req, res)
+    res.status(200).send(products)
+  } catch (err) {
+    res.status(500).send('something went wrong!')
+  }
 })
 router.post('/add', async (req, res) => {
-  const products = await createProduct(req, res)
-  res.status(200).send(products)
+  try {
+    const products = await createProduct(req, res)
+    res.status(200).send(products)
+  } catch (err) {
+    res.status(500).send('something went wrong!')
+  }
 })
 export default router
